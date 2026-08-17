@@ -6,8 +6,36 @@ on:
       - main
 
 jobs:
-  terraform:
+  network:
     runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check AWS identity
+        run: aws sts get-caller-identity
+      
+      - name: Terraform Init
+        run: terraform init
+        working-directory: ./infra/resources/network
+
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: ./infra/resources/network
+
+      - name: Terraform Plan
+        run: terraform plan
+        working-directory: ./infra/resources/network
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        working-directory: ./infra/resources/network
+
+
+  eks:
+    runs-on: self-hosted
+    needs: network 
 
     steps:
       - name: Checkout
