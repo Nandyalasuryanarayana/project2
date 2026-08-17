@@ -24,5 +24,6 @@ module "vpc" {
   private_eks_master_components_subnet_az2_cidr = var.private_eks_master_components_subnet_az2_cidr
   # destination = var.destination
   # vpc_peering_connection_id = var.vpc_peering_connection_id
+  # Network rename to network
 
 }
