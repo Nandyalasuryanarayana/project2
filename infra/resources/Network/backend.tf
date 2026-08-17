@@ -7,5 +7,7 @@ terraform {
     bucket  = "terraform-remote-states-178"
     key     = "projects/network/network.tfstate"
     region  = "ap-south-1"
+    encrypt      = true
+    use_lockfile = true
   }
 }
