@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       # Checkout code
@@ -56,7 +56,7 @@ jobs:
           path: frontend/build
 
   docker-build-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build-test   # only run if tests/build succeed
 
     steps:
